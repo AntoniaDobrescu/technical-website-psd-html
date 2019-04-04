@@ -1,6 +1,10 @@
-async function myFunc() {
-    console.log('Works');
-}
+const $toggleMenuButton = document.getElementById('toggleMenuButton');
+const $menuCloseButton = document.getElementById('menuCloseButton');
+const $toggleMenuNav = document.getElementById('toggleMenuNav');
 
-myFunc()
-    .then(res => console.log(res));
+const toggleMenuNav = () => {
+    $toggleMenuNav.classList.toggle('isOpen');
+};
+
+$toggleMenuButton.addEventListener('click', toggleMenuNav);
+$menuCloseButton.addEventListener('click', toggleMenuNav);

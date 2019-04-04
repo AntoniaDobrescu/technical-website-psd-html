@@ -1,5 +1,308 @@
-$darkGray: #a9a9a9;
+@import "reset";
+
+$backgroundColor: #fff;
+$buttonColor: #2166a9;
+$borderColor: #bedaff;
+
+$widthMobile: 600px;
+$widthTablet: 1200px;
+
+$primaryColor: #2166a9;
+$textColorPrimary: #fff;
+$textColorSecondary: #2166a9;
 
 body {
-	background: $darkGray;
+	background: $backgroundColor;
 }
+
+.mainContainer {
+	box-sizing: border-box;
+	display: grid;
+	grid-template-areas:
+	'header header header'
+	'banner banner banner'
+	'sectionBox sectionBox sectionBox'
+	'sectionContent sectionContent aside'
+	'sectionPhoto sectionPhoto sectionPhoto'
+	'footer footer footer';
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 0 10px;
+
+	@media (min-width: $widthTablet) {
+		padding: 0 20px
+	}
+}
+
+
+// header
+
+.button {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+
+	@media (min-width: $widthMobile) {
+		width: 46px;
+		height: 46px;
+	}
+}
+
+.menuCloseButton {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.icon {
+	width: 100%;
+	height: 100%;
+}
+
+.toggleMenu {
+	@media (min-width: $widthTablet) {
+		display: none;
+	}
+}
+
+.toggleMenuNav {
+	width: 280px;
+	height: 100vh;
+	position: fixed;
+	z-index: 1;
+	padding-top: 50px;
+	box-sizing: border-box;
+	transform: translateX(calc(-100% - 10px));
+	background: $backgroundColor;
+	border-right: 1px solid $borderColor;
+	transition: transform .4s;
+}
+
+.isOpen {
+	transform: translateX(0);
+}
+
+.toggleMenuItem {
+	margin: 10px 0;
+}
+
+.toggleMenuLink {
+	display: block;
+	width: 100%;
+	background: $buttonColor;
+	text-align: center;
+	text-decoration: none;
+	line-height: 2.5em;
+}
+
+.header {
+	grid-area: header;
+	display: flex;
+	@media (min-width: $widthTablet) {
+		flex-direction: column;
+
+	}
+}
+
+.logo {
+	font-size: 35px;
+	line-height: 1.2em;
+	margin-left: auto;
+	padding: 0 10px 0 0;
+
+	@media (min-width: $widthTablet) {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.menuList {
+	display: none;
+
+	@media (min-width: $widthTablet) {
+		display: grid;
+		grid-template-columns: repeat(5, 184px);
+		grid-column-gap: 10px;
+		justify-content: center;
+	}
+}
+
+
+.menuListItem {
+	height: 60px;
+	background-color: $primaryColor;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.menuLink {
+	text-decoration: none;
+	color: $textColorPrimary;
+	font-size: 20px;
+}
+
+
+//main
+
+.banner {
+	grid-area: banner;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 298px;
+	padding: 10px;
+	box-sizing: border-box;
+	background: url(../img/banner.png) #bedaff no-repeat center;
+	background-size: contain;
+	position: relative;
+}
+
+.imgBanner {
+	width: 100%;
+	height: auto;
+}
+
+.informationBox {
+	display: none;
+
+	@media (min-width: $widthTablet) {
+		display: block;
+		top: 30px;
+		left: 30px;
+		background-color: $primaryColor;
+		position: absolute;
+		width: 330px;
+		height: 180px;
+		box-sizing: border-box;
+		padding: 15px;
+	}
+}
+
+.titleText {
+//	display: none;
+
+	@media (min-width: $widthTablet) {
+		color: $textColorPrimary;
+		font-size: 20px;
+		font-weight: bold;
+		padding-bottom: 5px;
+		border-bottom: 1px solid $textColorPrimary;
+	}
+}
+
+.text {
+//	display: none;
+
+	@media (min-width: $widthTablet) {
+		color: $textColorPrimary;
+		line-height: 1.2;
+		padding-top: 5px;
+	}
+}
+
+.externalLinkBanner {
+//	display: none;
+
+	@media (min-width: $widthTablet) {
+		position: relative;
+		bottom: -20px;
+		left: 30px;
+		background-color: $primaryColor;
+		width: 650px;
+		height: 100px;
+	}
+
+}
+
+.sectionBox {
+	grid-area: sectionBox;
+	display: grid;
+	justify-content: center;
+	padding-top: 60px;
+
+	@media (min-width: $widthMobile) {
+		grid-template-columns: repeat(2, 1fr);
+		grid-column-gap: 30px;
+	}
+
+	@media (min-width: $widthTablet) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.containerBox {
+	background: #e8e8e8;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-sizing: border-box;
+	padding: 20px 25px;
+}
+
+.titleBox {
+	font-size: 20px;
+	font-weight: bold;
+	padding: 0 0 35px 0;
+}
+
+.imgBox {
+	width: 240px;
+	height: 90px;
+	background-color: #3a3b3f;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.backgroundImgBox {
+	width: 250px;
+	height: 100px;
+	background-color: $textColorPrimary;
+	border: 1px #000000 solid;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.imgSize {
+	color: $textColorPrimary;
+	font-size: 30px;
+	display: flex;
+	justify-content: center;
+}
+
+.paragraphBox {
+	font-size: 12px;
+	padding: 23px 0;
+}
+
+.anchorBox {
+	align-self: flex-end;
+	text-decoration: none;
+	color: $textColorSecondary;
+}
+
+.sectionContent {
+	grid-area: sectionContent;
+
+}
+
+.aside {
+	grid-area: aside;
+
+}
+
+.sectionPhoto {
+	grid-area: sectionPhoto;
+
+}
+
+//footer
+
+.footer {
+	grid-area: footer;
+
+}
+
+
