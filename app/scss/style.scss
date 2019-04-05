@@ -1,6 +1,7 @@
 @import "reset";
 
-$backgroundColor: #fff;
+$backgroundColorPrimary: #fff;
+$backgroundColorSecondary: #bedaff;
 $buttonColor: #2166a9;
 $borderColor: #bedaff;
 
@@ -12,7 +13,7 @@ $textColorPrimary: #fff;
 $textColorSecondary: #2166a9;
 
 body {
-	background: $backgroundColor;
+	background: $backgroundColorPrimary;
 }
 
 .mainContainer {
@@ -22,7 +23,7 @@ body {
 	'header header header'
 	'banner banner banner'
 	'sectionBox sectionBox sectionBox'
-	'sectionContent sectionContent aside'
+	'sectionContent sectionContent sectionContent'
 	'sectionPhoto sectionPhoto sectionPhoto'
 	'footer footer footer';
 	max-width: 960px;
@@ -66,6 +67,7 @@ body {
 }
 
 .toggleMenuNav {
+	display: none;
 	width: 280px;
 	height: 100vh;
 	position: fixed;
@@ -73,13 +75,22 @@ body {
 	padding-top: 50px;
 	box-sizing: border-box;
 	transform: translateX(calc(-100% - 10px));
-	background: $backgroundColor;
+	background: $backgroundColorPrimary;
 	border-right: 1px solid $borderColor;
-	transition: transform .4s;
+	transition: transform .4s ease-in-out;
+
+	@media (min-width: 960px) and (max-width: 1199px) {
+		transform: translateY(-100%);
+	}
 }
 
 .isOpen {
+	display: block;
 	transform: translateX(0);
+
+	@media (min-width: 960px) and (max-width: 1199px) {
+		transform: translateY(0);
+	}
 }
 
 .toggleMenuItem {
@@ -153,7 +164,7 @@ body {
 	height: 298px;
 	padding: 10px;
 	box-sizing: border-box;
-	background: url(../img/banner.png) #bedaff no-repeat center;
+	background: url(../img/banner.png) $backgroundColorSecondary no-repeat center;
 	background-size: contain;
 	position: relative;
 }
@@ -180,7 +191,6 @@ body {
 }
 
 .titleText {
-//	display: none;
 
 	@media (min-width: $widthTablet) {
 		color: $textColorPrimary;
@@ -192,7 +202,6 @@ body {
 }
 
 .text {
-//	display: none;
 
 	@media (min-width: $widthTablet) {
 		color: $textColorPrimary;
@@ -202,17 +211,28 @@ body {
 }
 
 .externalLinkBanner {
-//	display: none;
+	display: none;
 
 	@media (min-width: $widthTablet) {
-		position: relative;
-		bottom: -20px;
-		left: 30px;
+		display: flex;
+		justify-content: center;
+		align-content: center;
+		position: absolute;
+		bottom: -40px;
+		right: 30px;
 		background-color: $primaryColor;
 		width: 650px;
 		height: 100px;
+		background-position: center center;
+		box-sizing: border-box;
+		padding: 15px;
 	}
+}
 
+.textLink {
+	font-size: 62px;
+	color: $textColorPrimary;
+	display: inline;
 }
 
 .sectionBox {
@@ -220,6 +240,9 @@ body {
 	display: grid;
 	justify-content: center;
 	padding-top: 60px;
+	grid-row-gap: 30px;
+	border-bottom: 2px $backgroundColorSecondary solid;
+	padding-bottom: 30px;
 
 	@media (min-width: $widthMobile) {
 		grid-template-columns: repeat(2, 1fr);
@@ -246,18 +269,7 @@ body {
 	padding: 0 0 35px 0;
 }
 
-.imgBox {
-	width: 240px;
-	height: 90px;
-	background-color: #3a3b3f;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
 .backgroundImgBox {
-	width: 250px;
-	height: 100px;
 	background-color: $textColorPrimary;
 	border: 1px #000000 solid;
 	display: flex;
@@ -265,11 +277,30 @@ body {
 	justify-content: center;
 }
 
+.containerBox .backgroundImgBox {
+	padding: 6px;
+}
+
+.imgBox {
+	background-color: #3a3b3f;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.containerBox .imgBox {
+	width: 240px;
+	height: 90px;
+}
+
 .imgSize {
 	color: $textColorPrimary;
-	font-size: 30px;
 	display: flex;
 	justify-content: center;
+}
+
+.imgBox .imgSize {
+	font-size: 30px;
 }
 
 .paragraphBox {
@@ -285,12 +316,107 @@ body {
 
 .sectionContent {
 	grid-area: sectionContent;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding-top: 30px;
 
+	@media (min-width: $widthMobile) {
+
+	}
+
+	@media (min-width: $widthTablet) {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+	}
 }
 
-.aside {
-	grid-area: aside;
+.article {
+	display: flex;
+	flex-direction: column;
 
+	@media (min-width: $widthMobile) {
+		flex-direction: row;
+	}
+}
+
+.sectionContent .imgBox {
+	width: 200px;
+	height: 160px;
+}
+
+.sectionContent .backgroundImgBox {
+	padding: 6px;
+}
+
+.sectionContent .imgSize {
+	font-size: 22px;
+}
+
+.titleArticle {
+	font-weight: bold;
+	font-size: 22px;
+	border-bottom: 1px $backgroundColorSecondary solid;
+	padding: 0 0 5px 10px;
+}
+
+.paragraphArticle {
+	line-height: 1.6;
+	padding-left: 10px;
+	overflow: hidden;
+}
+
+.categories {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	@media (min-width: $widthTablet) {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.titleCategories {
+	font-weight: bold;
+	padding-bottom: 10px;
+
+	@media (min-width: $widthMobile) {
+
+	}
+
+	@media (min-width: $widthTablet) {
+		font-size: 22px;
+	}
+}
+
+.itemCategoties {
+	font-size: 20px;
+
+	@media (min-width: $widthTablet) {
+		line-height: 1.1;
+	}
+}
+
+.anchorItem {
+	text-decoration: none;
+}
+
+.listCategories {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 30px;
+
+	@media (min-width: $widthMobile) {
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-column-gap: 50px;
+	}
+
+	@media (min-width: $widthTablet) {
+		grid-template-columns: 1fr;
+	}
 }
 
 .sectionPhoto {
