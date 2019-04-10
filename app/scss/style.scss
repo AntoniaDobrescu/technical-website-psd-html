@@ -118,8 +118,6 @@ body {
 .logo {
 	font-size: 35px;
 	line-height: 1.2em;
-	margin-left: auto;
-	padding: 0 10px 0 0;
 
 	@media (min-width: $widthTablet) {
 		margin: 0;
@@ -127,12 +125,18 @@ body {
 	}
 }
 
+.logoSection {
+	display: flex;
+	justify-content: space-between;
+	margin: 40px 0 30px 0
+}
+
 .menuList {
 	display: none;
 
 	@media (min-width: $widthTablet) {
 		display: grid;
-		grid-template-columns: repeat(5, 184px);
+		grid-template-columns: repeat(5, 1fr);
 		grid-column-gap: 10px;
 		justify-content: center;
 	}
@@ -167,6 +171,7 @@ body {
 	background: url(../img/banner.png) $backgroundColorSecondary no-repeat center;
 	background-size: contain;
 	position: relative;
+	margin-bottom: 60px;
 }
 
 .imgBanner {
@@ -239,9 +244,8 @@ body {
 	grid-area: sectionBox;
 	display: grid;
 	justify-content: center;
-	padding-top: 60px;
 	grid-row-gap: 30px;
-	border-bottom: 2px $backgroundColorSecondary solid;
+	border-bottom: 1px $backgroundColorSecondary solid;
 	padding-bottom: 30px;
 
 	@media (min-width: $widthMobile) {
@@ -261,6 +265,11 @@ body {
 	align-items: center;
 	box-sizing: border-box;
 	padding: 20px 25px;
+
+	.imgBox {
+		width: 240px;
+		height: 90px;
+	}
 }
 
 .titleBox {
@@ -275,10 +284,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
-
-.containerBox .backgroundImgBox {
-	padding: 6px;
+	padding: 5px;
 }
 
 .imgBox {
@@ -288,7 +294,7 @@ body {
 	justify-content: center;
 }
 
-.containerBox .imgBox {
+.containerBox .backgroundImgBox {
 	width: 240px;
 	height: 90px;
 }
@@ -318,13 +324,9 @@ body {
 	grid-area: sectionContent;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	justify-content: center;
+	align-items: stretch;
 	padding-top: 30px;
-
-	@media (min-width: $widthMobile) {
-
-	}
 
 	@media (min-width: $widthTablet) {
 		display: grid;
@@ -335,6 +337,9 @@ body {
 .article {
 	display: flex;
 	flex-direction: column;
+	align-items: stretch;
+	border-bottom: 1px $backgroundColorSecondary solid;
+	padding-bottom: 20px;
 
 	@media (min-width: $widthMobile) {
 		flex-direction: row;
@@ -347,61 +352,79 @@ body {
 }
 
 .sectionContent .backgroundImgBox {
-	padding: 6px;
-}
+	max-width: 200px;
+	max-height: 160px;
+	margin: 0 20px 0 0;
 
-.sectionContent .imgSize {
-	font-size: 22px;
+	@media (min-width: $widthTablet) {
+		margin-right: 10px;
+	}
 }
 
 .titleArticle {
 	font-weight: bold;
 	font-size: 22px;
 	border-bottom: 1px $backgroundColorSecondary solid;
-	padding: 0 0 5px 10px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+
+	@media (max-width: $widthMobile) {
+		padding: 0 0 5px 10px;
+	}
 }
 
 .paragraphArticle {
-	line-height: 1.6;
-	padding-left: 10px;
+	line-height: 25px;
 	overflow: hidden;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.anchorContent {
+	text-decoration: none;
+	color: $primaryColor;
+	display: flex;
+	justify-content: flex-end;
+	padding-top: 20px;
 }
 
 .categories {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	justify-content: center;
 
 	@media (min-width: $widthTablet) {
-		display: flex;
-		flex-direction: column;
+		justify-content: flex-start;
+		padding-left: 30px;
 	}
 }
 
 .titleCategories {
 	font-weight: bold;
-	padding-bottom: 10px;
-
-	@media (min-width: $widthMobile) {
-
-	}
+	padding: 20px;
+	font-size: 22px;
+	display: flex;
+	justify-content: center;
 
 	@media (min-width: $widthTablet) {
-		font-size: 22px;
+		justify-content: flex-start;
+		box-sizing: border-box;
+		padding: 0 0 10px 0;
 	}
 }
 
-.itemCategoties {
+.itemCategories {
 	font-size: 20px;
 
 	@media (min-width: $widthTablet) {
-		line-height: 1.1;
+		line-height: 20px;
 	}
 }
 
 .anchorItem {
 	text-decoration: none;
+	color: $primaryColor;
 }
 
 .listCategories {
@@ -421,14 +444,37 @@ body {
 
 .sectionPhoto {
 	grid-area: sectionPhoto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 20px;
+}
 
+.sectionPhoto .imgBox {
+	width: 174px;
+	height: 100px;
 }
 
 //footer
 
 .footer {
 	grid-area: footer;
-
+	height: 45px;
+	width: 100%;
+	background-color: $primaryColor;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 25px;
 }
 
+.footerText {
+	color: $backgroundColorPrimary;
+	padding-left: 10px;
+}
 
+.template {
+	color: $backgroundColorPrimary;
+	padding-right: 10px;
+}
